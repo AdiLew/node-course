@@ -66,9 +66,18 @@ yargs.command({
 yargs.command({
     command: 'test',
     handler () {
+        notes.deleteAllNotes()
         notes.addNote('Rule 1', "Don't pick up the phone, you know he's only calling cause he's drunk and alone")
         notes.addNote("Rule 2", "Don't let him in, you'll have to kick him out again")
-        notes.removeNote("Rule 3")
+        notes.addNote("Rule 3", "Don't be his friend, you know you're gonna wake up in his bed in the morning")
+        notes.addNote("Rule 4", "If you're under him, you aint getting over him")
+        console.log()
+        notes.removeNote("Rule 4")
+        console.log()
+        notes.listNotes()
+        console.log()
+        notes.readNote("Rule 3")
+        console.log()
     }
 })
 

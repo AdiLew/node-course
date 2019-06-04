@@ -3,10 +3,6 @@ const chalk = require('chalk');
 
 const filePath = './notes.json';
 
-const getNotes = () => {
-    return 'Your notes'
-}
-
 const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNote = notes.find((note)=> note.title === title);
@@ -60,6 +56,10 @@ const readNote = (title) => {
     }
 }
 
+const deleteAllNotes = () => {
+    fs.writeFileSync(filePath, '[]')
+}
+
 const loadNotes = () => {
     try {
         const notesBuffer = fs.readFileSync(filePath);
@@ -80,5 +80,6 @@ module.exports = {
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
-    readNote: readNote
+    readNote: readNote,
+    deleteAllNotes: deleteAllNotes
 };
