@@ -58,7 +58,9 @@ yargs.command({
             type: "string"
         }
     },
-    handler(argv){}
+    handler(argv){
+        notes.readNote(argv.title)
+    }
 })
 
 yargs.command({
