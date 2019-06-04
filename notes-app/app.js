@@ -4,7 +4,7 @@ const yargs = require("yargs");
 
 yargs.command({
     command: "add",
-    desc: "Add a new Note",
+    describe: "Add a new Note",
     builder: {
         title: {
             describe: "The title for your note",
@@ -21,8 +21,22 @@ yargs.command({
         console.log(chalk.blue.underline('\n' + argv.title))
         console.log(argv.body + '\n\n')
     }
-}
-)
+})
+
+yargs.command({
+    command: "remove",
+    describe: "Remove a note",
+    builder: {
+        title:{
+            describe:"The title of the note to remove",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: function(argv){
+        console.log("\nRemoving "+chalk.italic(argv.title)+'\n')
+    }
+})
 
 
 
