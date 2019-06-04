@@ -18,8 +18,7 @@ yargs.command({
         }
     },
     handler: function (argv) {
-        console.log(chalk.blue.underline('\n' + argv.title))
-        console.log(argv.body + '\n\n')
+        notes.addNote(argv.title, argv.body)
     }
 })
 
