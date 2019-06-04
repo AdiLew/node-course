@@ -1,4 +1,5 @@
 const fs = require('fs');
+const chalk = require('chalk');
 
 const filePath = './notes.json';
 
@@ -18,11 +19,28 @@ const addNote = function (title, body) {
             body: body
         })
         saveNotes(notes);
-        console.log('New note added!')
+        console.log(chalk.green(`The note ${title} was added!`))
     }
     else {
-        console.log('Note title Taken!')
+        console.log(chalk.red(`The title ${title} is taken!`))
     }
+    
+}
+
+const removeNote = function(title){
+    const notes = loadNotes();
+    const newNotes = notes.filter(function(note){
+        return note.title !== title
+    })
+
+    if (notes.length > newNotes.length){
+        saveNotes(newNotes)
+        console.log(chalk.green.inverse(`${title} removed!`))
+    }
+    else {
+        console.log(chalk.red.inverse(`${title} was not found`))
+    }
+  
     
 }
 
@@ -45,5 +63,6 @@ const saveNotes = function(notes){
 
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 };

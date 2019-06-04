@@ -33,10 +33,17 @@ yargs.command({
         }
     },
     handler: function(argv){
-        console.log("\nRemoving "+chalk.italic(argv.title)+'\n')
+        notes.removeNote(argv.title)
     }
 })
 
-
+yargs.command({
+    command: 'test',
+    handler:function(){
+        notes.addNote('Rule 1', "Don't pick up the phone, you know he's only calling cause he's drunk and alone")
+        notes.addNote("Rule 2", "Don't let him in, you'll have to kick him out again")
+        notes.removeNote("Rule 3")
+    }
+})
 
 yargs.parse()
