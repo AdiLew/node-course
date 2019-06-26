@@ -1,4 +1,6 @@
-const geocode = require('./utils/geocode.js')
+const geocode = require('./utils/geocode.js'),
+    forecast = require('./utils/forecast.js'),
+    chalk = require('chalk')
 
 // const darkSkyApiKey = '7a082462b8803c852b80c55f9012ed89',
 //     mapBoxApiKey = 'pk.eyJ1IjoiYWRpbGV3IiwiYSI6ImNqeGM3ZmlzdzAwZ28zcHF3c3V5bXJqaXkifQ.i1PV3F_Hi8fNe-1pubTUsQ',
@@ -25,6 +27,24 @@ const geocode = require('./utils/geocode.js')
 
 
 geocode('Tel Aviv', (error, data) => {
-    console.log('Error',error)
-    console.log('Data',data)
+    if (error){
+        console.log(error)
+    }
+    else{
+        forecast(data.lat,data.lon, (fError, fData)=>{
+            if (error){
+                console.log(chalk.red.underline('Error!'))
+                console.log(fError)
+            }
+            else {            
+                console.log(chalk.cyan.underline(`Current weather in ${data.placeName}`))
+                console.log(fData)
+            }
+        })
+    }
 })
+
+// forecast(-75.7088, 44.1545, (error, data)=>{
+//     console.log('Error',error);
+//     console.log('Data',data)
+// })
