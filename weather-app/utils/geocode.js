@@ -11,7 +11,7 @@ const geocode = (address, callback) => {
         else if (response.message) { 
             callback(response.message) 
         }
-        else if (response.body.features.length === 0) { 
+        else if ( (!response.body.features) || response.body.features.length === 0) { 
             callback(`${address} is not a known location. Please try another search term.`) 
         }
         else {
