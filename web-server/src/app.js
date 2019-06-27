@@ -1,6 +1,12 @@
+const path = require('path');
 const express = require('express');
 
+
 const app = express();
+
+const publicDirectoryPath = path.join(__dirname,'../public')
+app.use(express.static(publicDirectoryPath));
+
 
 //app.com
 app.get('', (req, res)=>{
@@ -8,22 +14,9 @@ app.get('', (req, res)=>{
 
 })
 
-//app.com/help
-app.get('/help', (req, res)=>{
-    res.send('Help Page <3')
-})
-
-//app.com/about
-
-app.get('/about', (req, res)=>{
-    res.send ('<h1 style="font-family: Verdana;">About us</h1>')
-    
-})
-
-
 //app.com/weather
 app.get('/weather',(req,res)=>{
-    res.send('<h1 style="font-family: Verdana;">Weather App!!!!</h1>')
+    res.send({location: 'Tel Aviv', forecast:'It\'s gonna be hot and awesome'})
 })
 
 
