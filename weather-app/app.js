@@ -8,18 +8,18 @@ if (process.argv.length == 2){
     return console.log('Please provide a location');
 }
 
-geocode(location, (error, data) => {
+geocode(location, (error, {lat, lon, placeName}) => {
     if (error) {
         return console.log(error)
     }
 
-    forecast(data.lat, data.lon, (fError, fData) => {
+    forecast(lat, lon, (error, forecast) => {
         if (error) {
-            return console.log(`${chalk.red.underline('Error!')}\n${fError}`)
+            return console.log(`${chalk.red.underline('Error!')}\n${error}`)
         }
 
-        console.log(chalk.cyan.underline(`Current weather in ${data.placeName}`))
-        console.log(fData)
+        console.log(chalk.cyan.underline(`Current weather in ${placeName}`))
+        console.log(forecast)
     })
 })
 
