@@ -3,15 +3,40 @@ const express = require('express');
 
 
 const app = express();
-
+//Define resource directories
 const publicDirectoryPath = path.join(__dirname,'../public')
+const viewsPath = path.join(__dirname, '../templates')
 app.use(express.static(publicDirectoryPath));
+
+//Set application's view engine to handlebars
+app.set('view engine','hbs')
+app.set('views',viewsPath)
+
 
 
 //app.com
 app.get('', (req, res)=>{
-    res.send('Hey there!')
+    //res.send('Hey there!')
+    res.render('index',
+    {
+        title:'Weather App',
+        name: 'Adi'
+    })
 
+})
+
+app.get('/about',(req,res)=>{
+    res.render('about',{
+        title: 'About Us',
+        something: 'Pizza'
+    })
+})
+
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        title: 'Help Page!',
+        helpMessage: "Here's where you get help."
+    })
 })
 
 //app.com/weather
