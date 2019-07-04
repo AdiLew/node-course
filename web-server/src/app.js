@@ -1,16 +1,19 @@
 const path = require('path');
 const express = require('express');
-
+const hbs = require('hbs');
 
 const app = express();
-//Define resource directories
-const publicDirectoryPath = path.join(__dirname,'../public')
-const viewsPath = path.join(__dirname, '../templates')
-app.use(express.static(publicDirectoryPath));
 
-//Set application's view engine to handlebars
+//Define paths for express config
+const publicDirectoryPath = path.join(__dirname,'../public')
+const viewsPath = path.join(__dirname, '../templates/views')
+
+//Setup handlebars engine and views location
 app.set('view engine','hbs')
 app.set('views',viewsPath)
+
+//Setup static directory to serve
+app.use(express.static(publicDirectoryPath));
 
 
 
