@@ -2,19 +2,22 @@
 <html>
 
 <head>
+    <title>About</title>
     {{>headCss}}
 </head>
 
 <body>
-    {{>navbar}}
-    {{>header}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid" src="/img/me.jpg">
-            </div>
-            <div class="offset-md-2 col-md-5">
+    <div class="wrapper">
+        {{>navbar}}
+        {{>header}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid" src="/img/me.jpg">
+                </div>
+                <div class="offset-md-2 col-md-5">
                     I think {{something}} is awesome!
+                </div>
             </div>
         </div>
     </div>

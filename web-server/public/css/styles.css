@@ -1,4 +1,14 @@
-/* .navbar{
-    background-color:#19194C;
-    color: white;
-} */
+body{
+    display:flex;
+    flex-direction: column;
+    min-height:100vh;
+}
+
+.wrapper{
+    flex-grow:1;
+}
+
+footer{
+    padding: 10px 0;
+    
+}

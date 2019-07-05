@@ -2,21 +2,25 @@
 <html>
 
 <head>
+    <title>Weather</title>
     {{>headCss}}
     <script src="/js/app.js"></script>
 </head>
 
 <body>
-    {{>navbar}}
-    {{>header}}
-    <div class="container">
-        <div class="row">
+    <div class="wrapper">
+        {{>navbar}}
+        {{>header}}
+        <div class="container">
+            <div class="row">
 
-            <div class="col-md-auto">
-                Hi {{name}}!
+                <div class="col-md-auto">
+                    Hi {{name}}!
+                </div>
             </div>
         </div>
     </div>
+
     {{>footer}}
 </body>
 

@@ -49,6 +49,12 @@ app.get('/weather',(req,res)=>{
     res.send({location: 'Tel Aviv', forecast:'It\'s gonna be hot and awesome'})
 })
 
+app.get('/products',(req,res)=>{
+    res.send({
+        products:[]
+    })
+})
+
 app.get('/help/*',(req, res)=>{
     res.render('404', {
         title: 'Oh no!',
