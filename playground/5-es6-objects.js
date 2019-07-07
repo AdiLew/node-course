@@ -23,8 +23,11 @@ const product = {
 // console.log(productLabel)
 // console.log(rating)
 
-const transaction = (type, {label, stock})=>{
+//product argument is assigned a default value of an empty object
+
+const transaction = (type, {label, stock = 0}={})=>{
     console.log(type, label, stock)
 
 }
+transaction('Order')
 transaction('Order',product)
